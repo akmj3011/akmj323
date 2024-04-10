@@ -1,3 +1,5 @@
+
+       
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,36 +34,42 @@
     .navbar .icon {
       display: none;
     }
+    .sidebar {
+      display: none;
+      position: fixed;
+      width: 200px;
+      background-color: #111;
+      height: 100%;
+      top: 0;
+      left: -200px;
+      transition: 0.3s;
+      padding-top: 60px;
+    }
+    .sidebar a {
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 25px;
+      color: #818181;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidebar a:hover {
+      color: #f1f1f1;
+    }
     @media screen and (max-width: 600px) {
       .navbar a:not(:first-child) {display: none;}
       .navbar a.icon {
         float: right;
         display: block;
       }
-    }
-    @media screen and (max-width: 600px) {
+      .navbar.responsive a:not(.icon) {display: block;}
       .navbar.responsive .icon {
         position: absolute;
         right: 0;
         top: 0;
       }
-      .navbar.responsive a {
-        float: none;
+      .sidebar {
         display: block;
-        text-align: left;
-      }
-    }
-    @media screen and (max-width: 600px) {
-      .navbar.responsive {position: relative;}
-      .navbar.responsive a.icon {
-        position: absolute;
-        right: 0;
-        top: 0;
-      }
-      .navbar.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
       }
     }
   </style>
@@ -78,19 +86,35 @@
   </a>
 </div>
 
+<div class="sidebar" id="sidebar">
+  <a href="#">Home</a>
+  <a href="#">About</a>
+  <a href="#">Contact</a>
+  <a href="#">FAQ</a>
+</div>
+
 <script>
 function myFunction() {
   var x = document.getElementById("myNavbar");
+  var y = document.getElementById("sidebar");
   if (x.className === "navbar") {
     x.className += " responsive";
+    y.style.left = "0";
   } else {
     x.className = "navbar";
+    y.style.left = "-200px";
   }
 }
 </script>
 
 </body>
 </html>
+
+
+
+
+
+
 
 
 
